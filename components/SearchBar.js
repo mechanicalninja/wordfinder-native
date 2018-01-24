@@ -31,6 +31,7 @@ export default class SearchBar extends React.Component {
                         autoFocus
                         onSubmitEditing={() => this.props.onSearch(this.state.text)}
                         autoCapitalize="none"
+                        returnKeyType="search"
                     />
                 </View>
                 <View style={{ flex: 0 }}>
