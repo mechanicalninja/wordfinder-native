@@ -1,13 +1,20 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
+import { getStatusBarHeight } from 'react-native-status-bar-height';
+
+import SearchBar from './components/SearchBar';
 
 export default class App extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = { search: '' }
+    }
+
     render() {
         return (
             <View style={styles.container}>
-                <Text>Open up App.js to start working on your app!</Text>
-                <Text>Changes you make will automatically reload.</Text>
-                <Text>Shake your phone to open the developer menu.</Text>
+                <SearchBar onSearch={(search) => this.setState({ search })}/>
+                <Text>Your search: {this.state.search}</Text>
             </View>
         );
     }
@@ -17,7 +24,8 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         backgroundColor: '#fff',
-        alignItems: 'center',
-        justifyContent: 'center',
+        paddingTop: getStatusBarHeight(),
+        // alignItems: 'center',
+        // justifyContent: 'center',
     },
 });
