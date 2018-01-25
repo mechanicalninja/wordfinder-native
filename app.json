@@ -1,5 +1,15 @@
 {
   "expo": {
-    "sdkVersion": "25.0.0"
+    "name": "Wordfinder",
+    "icon": "./icon/icon.png",
+    "version": "1.0.0",
+    "slug": "wordfinder",
+    "sdkVersion": "25.0.0",
+    "ios": {
+      "bundleIdentifier": "com.mechanicalninja.wordfinder"
+    },
+    "android": {
+      "package": "com.mechanicalninja.wordfinder"
+    }
   }
 }
