@@ -1,5 +1,5 @@
 import React from 'react';
-import { ScrollView, StyleSheet, Text, View } from 'react-native';
+import { ActivityIndicator, ScrollView, StyleSheet, Text, View } from 'react-native';
 import { getStatusBarHeight } from 'react-native-status-bar-height';
 
 import wordSearch from './util/WordSearch';
@@ -30,16 +30,22 @@ export default class App extends React.Component {
     }
 
     render() {
-        const resultList = this.state.results.map((result) => (
-            <View style={styles.item} key={result}>
-                <Text>{result}</Text>
-            </View>
-        ));
+        let body;
+        if (this.state.searching) {
+            body = <ActivityIndicator/>
+        } else {
+            const resultList = this.state.results.map((result) => (
+                <View style={styles.item} key={result}>
+                    <Text>{result}</Text>
+                </View>
+            ));
+            body = <ScrollView>{resultList}</ScrollView>;
+        }
 
         return (
             <View style={styles.container}>
                 <SearchBar onSearch={(search) => this.setState({ search })}/>
-                <ScrollView>{resultList}</ScrollView>
+                {body}
             </View>
         );
     }
