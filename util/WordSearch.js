@@ -11,7 +11,8 @@ let disassembleString = (string) => {
 };
 
 let processWordList = new Promise((resolve, reject) => {
-    import('deconstructed-word-list/dist/up-to-10').then((wordList) => {
+
+    import('deconstructed-word-list/dist/up-to-6').then((wordList) => {
         resolve(wordList);
     });
 });

@@ -29,6 +29,7 @@ export default class SearchBar extends React.Component {
                         value={this.state.text}
                         autoCorrect={false}
                         autoFocus
+                        maxLength={6}
                         onSubmitEditing={() => this.props.onSearch(this.state.text)}
                         autoCapitalize="none"
                         returnKeyType="search"
