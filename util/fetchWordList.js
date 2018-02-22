@@ -1,5 +1,4 @@
 import { FileSystem } from 'expo';
-import msgpack from 'msgpack-lite';
 
 const fetchPromise = ({ url, file }) => {
   return new Promise((resolve) => {
