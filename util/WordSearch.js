@@ -1,39 +1,32 @@
-let disassembleString = (string) => {
-    let filteredString = string.replace(/[^A-Z]/gi, '').toUpperCase();
+import fetchWordList from './fetchWordList';
 
-    let components = {};
-    filteredString.split('').forEach((letter) => {
-        letter = letter.toUpperCase();
-        components[letter] = components[letter] ? components[letter] + 1 : 1;
-    });
+const disassembleString = (string) => {
+  const filteredString = string.replace(/[^A-Z]/gi, '').toUpperCase();
 
-    return components;
+  const components = {};
+  filteredString.split('').forEach((letter) => {
+    const ucLetter = letter.toUpperCase();
+    components[ucLetter] = components[ucLetter] ? components[ucLetter] + 1 : 1;
+  });
+
+  return components;
 };
 
-let processWordList = new Promise((resolve, reject) => {
+export default (needle = '') => new Promise((resolve) => {
+  fetchWordList(10).then((preprocessedWordList) => {
+    const disassembledNeedle = disassembleString(needle);
 
-    import('deconstructed-word-list/dist/up-to-6').then((wordList) => {
-        resolve(wordList);
-    });
+    const matches = preprocessedWordList
+      .filter(haystackItem => Object.keys(haystackItem[1])
+        .every((letter) => {
+          if (!disassembledNeedle[letter]) {
+            return false;
+          }
+          return disassembledNeedle[letter] >= haystackItem[1][letter];
+        }));
+
+    const matchedWords = matches.map(match => (match[0]));
+
+    resolve(matchedWords);
+  });
 });
-
-export default (needle = '') => {
-    return new Promise((resolve, reject) => {
-        processWordList.then((preprocessedWordList) => {
-            let disassembledNeedle = disassembleString(needle);
-
-            let matches = preprocessedWordList.filter((haystackItem) => {
-                return Object.keys(haystackItem[1]).every((letter) => {
-                    if (!disassembledNeedle[letter]) {
-                        return false;
-                    }
-                    return disassembledNeedle[letter] >= haystackItem[1][letter];
-                })
-            });
-
-            let matchedWords = matches.map((match) => (match[0]));
-
-            resolve(matchedWords);
-        });
-    });
-};

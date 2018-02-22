@@ -1,0 +1,30 @@
+{
+  "env": {
+    "es6": true,
+    "node": true
+  },
+  "extends": [
+    "airbnb"
+  ],
+  "parserOptions": {
+    "sourceType": "module"
+  },
+  "plugins": [
+    "import",
+    "mocha"
+  ],
+  "settings": {
+    "react/jsx-filename-extension": "off",
+    "import/resolver": {
+      "meteor": {
+        "extensions": [
+          ".js",
+          ".jsx"
+        ],
+        "moduleDirectory": [
+          "node_modules"
+        ]
+      }
+    }
+  }
+}
