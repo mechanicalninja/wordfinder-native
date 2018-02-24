@@ -14,6 +14,6 @@
 	<key>STANDALONE_CONTEXT_TYPE</key>
 	<string>user</string>
 	<key>developmentUrl</key>
-	<string>exp069b5a5a7c724e3ea712930649dc922b://u6-4e7.tdukart.wordfinder-native.exp.direct:80</string>
+	<string>exp069b5a5a7c724e3ea712930649dc922b://localhost:80</string>
 </dict>
 </plist>
