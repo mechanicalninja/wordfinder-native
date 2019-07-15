@@ -20,14 +20,14 @@
     "preset": "jest-expo"
   },
   "dependencies": {
-    "babel-core": "^6.0.0",
+    "@babel/core": "^7.5.4",
     "create-react-class": "^15.6.3",
     "deconstructed-word-list": "^0.1.4",
-    "expo": "^25.0.0",
+    "expo": "^33.0.0",
     "msgpack-lite": "^0.1.26",
     "prop-types": "15.6.0",
     "react": "16.2.0",
-    "react-native": "https://github.com/expo/react-native/archive/sdk-25.0.0.tar.gz",
+    "react-native": "https://github.com/expo/react-native/archive/sdk-33.0.0.tar.gz",
     "react-native-status-bar-height": "^2.0.0"
   }
 }
